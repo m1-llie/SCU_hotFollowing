@@ -14,7 +14,7 @@
 
 03 系统效果展示
 ------------
-主要的大屏展示界面为三个。图表使用[ECharts](https://echarts.baidu.com/theme-builder/zh/index.html)进行设计。</br>
+主要有三个大屏展示界面。图表使用[ECharts](https://echarts.baidu.com/theme-builder/zh/index.html)进行设计。</br>
 1. 打开系统首页，会自动连接到数据库并刷新数据。设定了每隔10s与后端云数据库进行一次交互，后端如有数据更改，前端这页的图表展示也会变化。</br>
 ![](https://github.com/m1-llie/SCU_hotFollowing/blob/master/readmeIMG/4.png)</br>
 2. 词云图一页中，我们展示了基于云数据库得到的本周新词的信息及它在数据库中出现的次数等；此外，本页还统计了参与讨论的用户数量和对应微博数量。</br>
