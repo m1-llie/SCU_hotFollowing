@@ -39,3 +39,4 @@
 ![](https://github.com/m1-llie/SCU_hotFollowing/blob/master/readmeIMG/2.png)</br>
 在上面的ERR概念模型到逻辑模型最后到物理模型，如下所示：</br>
 ![](https://github.com/m1-llie/SCU_hotFollowing/blob/master/readmeIMG/3.png)</br>
+（本repo中不含数据库数据）
