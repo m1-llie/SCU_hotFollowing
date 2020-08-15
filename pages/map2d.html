@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>川大风评分析-川大词云</title>
+
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-wordcloud.min.js"></script>
+    
+    <link rel="shortcut icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" href="../static/assets/css/iconfont.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/map2d.css">
+    <script src="../static/assets/js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body id="investmentRisk">
+<div id="container">
+    <script src="../static/js/common.js"></script>
+    <h1 style="color:azure;">云环境下的微博平台川大风评分析系统：川大词云</h1>
+    <nav>
+        <a href="index.html">回到首页</a>
+        <a href="globe3d.html">URL溯源求是</a>
+    </nav>
+
+    <main>
+        <!--样式里的l,m,r,t,b分别代表左，中，右，上，下-->
+        <div class="l">
+            <div class="chart-wrap">
+                <h3>川大目前Top关联词</h3>
+                <div id="wordCloud" style="width: 100%;height: 100%">
+                    <script src="../static/js/wordCloud.js"></script>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="r">
+            <div class="r-t">
+                <div class="chart-wrap">
+                    <h3>海纳百川 有容乃大</h3>
+                    <img src="..\static\img\川大校徽.png"  alt="川大校徽" />
+                </div>
+            </div>
+            <div class="r-b">
+                <div class="chart-wrap c04_bestLocation">
+                    <h3>“川大”关联词排行榜</h3>
+                    <div class="chart" id="c04_bestLocation">
+                            <table class=table2_2>
+                            <tr>
+                                <th>排位</th><th>舆论热点关键词</th><th>参与讨论用户</th><th>相关微博数</th>
+                            </tr>
+                            <tr>
+                                <td>1</td><td>毕业</td><td>245</td><td>261</td>
+                            </tr>
+                            <tr>
+                                <td>2</td><td>强基</td><td>206</td><td>253</td>
+                            </tr>
+                                <tr>
+                                <td>3</td><td>川大统领</td><td>208</td><td>241</td>
+                            </tr>
+                            <tr>
+                                <td>4</td><td>研究生</td><td>212</td><td>239</td>
+                            </tr>
+                            <tr>
+                                <td>5</td><td>强基计划</td><td>198</td><td>231</td>
+                            </tr>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<aside></aside>
+<script>
+    if (notebookOptim) {
+        $(`.ec04_pie_life .input-group>label,
+			.r-t .text,
+			.r-t .chart,
+			.r-b .text,
+			#blessings_input,
+			#startTime_input,
+			.blessings-input-wrap .label2
+
+			`).addClass('notebook');
+    }
+</script>
+<script src="../static/assets/js/echarts-4.2.0.min.js"></script>
+<script src="../static/js/chartsCom.js"></script>
+</body>
+</html>

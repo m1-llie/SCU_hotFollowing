@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>云环境下的微博平台川大风评分析系统</title>
+    <link rel="shortcut icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" href="../static/assets/css/iconfont.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <script src="../static/assets/js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body id="investmentRisk">
+<div id="container">
+    <script src="../static/js/common.js"></script>
+    <h1 style="color:azure;">第七组——云环境下的微博平台川大风评分析系统</h1>
+    <nav>
+        <a href="map2d.html">川大词云</a>
+        <a href="globe3d.html">URL溯源求是</a>
+    </nav>
+    <main>
+        <!--样式里的l,m,r,t,b分别代表左，中，右，上，下-->
+        <div class="l">
+            <div class="l-t">
+                <div class="chart-wrap">
+                    <h3>川大舆情量</h3>
+                    <div class="chart" id="ec01_line_tiobe"></div>
+                </div>
+            </div>
+            <div class="l-b">
+                <div class="chart-wrap">
+                    <h3>整体情感分析</h3>
+                    <div class="chart" id="ec02_area_accessSource"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="m">
+            <div class="m-t">
+                <div class="chart-wrap">
+                    <h3>本周热门联想词</h3>
+                    <div class="chart" id="ec03_barV_timeDistribute"></div>
+                </div>
+            </div>
+            <div class="m-b">
+                <div class="chart-wrap">
+                    <h3>参与讨论用户地域分布</h3>
+                    <div class="chart" id="ec04_pie_computerBroken"></div>
+                </div>
+            </div>
+        </div>  
+
+        <div class="r">
+            <div class="r-t">
+                <div class="chart-wrap">
+                    <h3>整体风评走向</h3>
+                    <div class="chart" id="ec05_lineBar_timeDistribute"></div>
+                </div>
+            </div>
+            <div class="r-b">
+                <div class="chart-wrap">
+                    <h3>参与账户注册时长</h3>
+                    <div class="chart" id="ec06_pie_findSong"></div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<aside></aside>
+<script src="../static/assets/js/echarts-4.2.0.min.js"></script>
+<script src="../static/js/chartsCom.js"></script>
+<script src="../static/js/index.js"></script>
+</body>
+</html>
+
+<!--/usr/local/apache-tomcat-9.0.16/webapps/ROOT/projects/bigScreenCharts-->
+
+
+
+
+

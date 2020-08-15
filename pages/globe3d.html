@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" ID="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta ID="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>川大风评分析-URL溯源求是</title>
+    <link rel="shortcut icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" href="../static/assets/css/iconfont.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/globe3d.css">
+    <script src="../static/assets/js/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="../static/layer/theme/default/layer.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/reponse.css">
+	<style type="text/css">
+		.alertceng{
+			background: #FFFFFF;
+			padding: 10px;
+			display: none;
+		}
+		.alertceng span.title{
+			margin-right: 10px;
+			color: #000000;
+		}
+	</style>
+</head>
+
+<body id="investmentRisk">
+<div id="container">
+    <script src="../static/js/common.js"></script>
+    <h1 style="color:azure;">云环境下的微博平台川大风评分析系统：URL溯源求是</h1>
+    <nav>
+        <a href="index.html">回到首页</a>
+        <a href="map2d.html">川大词云</a>
+    </nav>
+
+    <div class="layui-fluid layadmin-homepContent-fluid" style="background: #fff;width:90%;margin:0 auto;">
+		<div id="pContent">
+			<div class="btn-container">
+				<button class="layui-btn" onclick="addtr();">新增一行</button>
+				<button class="layui-btn" onclick="ExportExcel();">导出Excel</button>
+				<button class="layui-btn" onclick="resivetabledata();">获取table数据</button>
+				<button class="layui-btn" onclick="reloadtable();">刷新table表格</button>
+				<button class="layui-btn" onclick="coldata();">获取某一列的数据</button>
+			</div>
+			<table id="table" class="reponsetable" ></table>
+			<script type="text/html" id="editer">
+				<a class="layui-btn layui-btn-xs" onclick="edittr(this)">编辑</a>
+				<a class="layui-btn layui-btn-xs" onclick="deletetr(this)">删除</a>
+				<a class="layui-btn layui-btn-xs" onclick="uptr(this)">上移</a>
+				<a class="layui-btn layui-btn-xs" onclick="downtr(this)">下移</a>
+		  </script>
+		</div>
+	</div>
+	<div id="editcontent" class="alertceng">
+			<p><span class="title">微博ID:</span><input type="text" id="ID"/></p>
+			<p><span class="title">微博内容:</span><input type="text" id="Content"/></p>
+			<p><span class="title">时间:</span><input type="text" id="Time"/></p>
+			<p><span class="title">舆论热点关键词:</span><input type="text" id="Key"/></p>
+			<p><span class="title">URL:</span><input type="text" id="URL"/></p>
+	</div>    
+</div>
+<aside></aside>
+<script>
+    if (notebookOptim) {
+        $('.ec04_pie_life .input-group>label,.r-b .text,#blessings_input,#startTime_input,.blessings-input-wrap .label2').addClass('notebook');
+    }
+</script>
+<script src="../static/assets/js/echarts-4.2.0.min.js"></script>
+<script src="https://echarts.baidu.com/examples/vendors/echarts-gl/echarts-gl.js"></script>
+<!--<script src="../static/assets/js/echarts-gl-1.1.1.js"></script>-->
+<script src="../static/js/chartsCom.js"></script>
+</body>
+
+<script src="../static/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="../static/js/jquery.basictable.min.js"></script>
+<script type="text/javascript" src="../static/reponsetable.min.js"></script>
+<script type="text/javascript" src="../static/layer/layer.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#table').basictable({
+			breakpoint: 768
+		});
+		$("#table").reponsetable({
+			"id":"table",
+			"operation": "editer",
+			"type":"numbers",
+			"colum": [
+				{"field": "ID","title": "微博ID"},
+				{"field": "Content","title": "微博内容"},
+				{"field": "Time","title": "时间"},
+				{"field": "Key","title": "舆论热点关键词"},
+				{"field": "URL","title": "URL"},
+			],
+			"data": [
+				{"ID": "4508759765206653","Content": "【“您的快递正由无人车配送……”川大这辆小车车萌翻一众网友！】","Time": "2020-06-10 09:28:55","Key": "无人车送快递","URL": "https://m.weibo.cn/detail/4508759765206653"},
+				{"ID": "4513116098867020","Content": "？川大强基报了6万个人[允悲]上个大学怎么这么难[跪了]","Time": "2020-06-07 08:26:33","Key": "强基计划","URL": "https://m.weibo.cn/detail/4513116098867029"},
+				{"ID": "4509597564834971","Content": "新闻速递 【两会中的川大好声音】全国“两会”开幕以来，来自各行各业的代表、委员提出了许多精彩提案，川大的代表、委员们也积极建言献策，为祖国发展贡献川大智慧。他们的精彩见解与观点也受到了社会和媒体的关注。（来源：大川微信）","Time": "2020-05-28 14:56:02","Key": "两会川大好声音","URL": "https://m.weibo.cn/detail/4509597564834971"},
+				{"ID": "4509994756918177","Content": "【我校先进材料科研大楼正式开工】日前，我校先进材料科研大楼项目正式在望江开工建设。该项目计划投资7.4亿元，总建筑面积约11.6万平方米，主要为生物材料、高分子、材料科学与工程以及制造科学与工程等相关学科提供科研试验用房。先进材料科研大楼的建成，有助于提升我校现有科研设施条件，为学校建设一流学科，打造高水平国际研发平台，服务国家重大战略提供强有力支撑。","Time": "2020-05-28 09:28:12","Key": "先进材料科研大楼","URL": "https://m.weibo.cn/detail/4509994756918177"},
+				{"ID": "4504196550443950","Content": "大川告诉你【 “强基计划”来川大，助你成就梦想！】5月12日，四川大学强基计划已开放报名。报名截止时间：5月31日00:00报名网址：","Time": "2020-05-13 15:48:36","Key": "强基计划","URL": "https://m.weibo.cn/detail/4504196550443952"},
+				{"ID": "4501000738201254","Content": "新传考研 四川大学考研 考研复试 新闻传播学考研 川大文新学院的复试公告终于发布啦！此次的复试形式为线上远程网络复试，具体时间为5月14-5月17日。关于此次复试，小田心有10点深度解读，快来看看吧[能量少女耶]发布了头条文章：《川大文新发布复试公告发布｜小田心有10点深度解读！》","Time": "2020-05-04 10:48:22","Key": "网络远程复试","URL": "https://m.weibo.cn/detail/4501000738201254"},
+				{"ID": "4460985023178985","Content": "36所高校入选强基计划试点高校名单 川大不仅是双一流大学，还是双流一大学[喵喵]","Time": "2020-01-15 20:45:12","Key": "强基计划","URL": "https://m.weibo.cn/detail/4460985023178985"},
+			]
+		});
+
+	})
+	function addtr() {
+		layer.open({
+		  type: 1,
+		  title: '编辑URL溯源求是信息',
+		  closeBtn: 1,
+		  area: '516px',
+		  skin: '#fff', //没有背景色
+		  shadeClose: true,
+		  content: $('#editcontent'),
+		  btn:["保存","关闭"],
+		  btn1:function(index,layero){
+			  var ID=$("#ID").val();
+			  var Content=$("#Content").val();
+			  var Time=$("#Time").val();
+			  var Key=$("#Key").val();
+			  var URL=$("#URL").val();
+			  var obj = {
+				"ID":ID,
+			  	"Content": Content,
+			  	"Time": Time,
+			  	"Key": Key,
+			  	"URL": URL,
+			  };
+			  reponse.addtr(obj, "table");
+			  //reponse.editsavetr(obj, "table");
+			  layer.close(index);
+		  },btn2:function(index,layero){
+			  layer.close(index);
+		  }
+		});
+	};
+	function uptr(btn, e) {
+		var tr = $(btn).parent().parent();
+		reponse.moveuptr(tr, "table");
+	}
+	function downtr(btn, e) {
+		var tr = $(btn).parent().parent();
+		reponse.moveDown(tr, "table");
+	}
+	function ExportExcel() {
+		var tableobj=$("#table").data("tableObj");
+		reponse.JSONToCSVConvertor(tableobj, true,"URL溯源求是表格");
+	}
+	function resivetabledata(){
+		var pp=$("#table").data("tableObj").data;
+		alert(JSON.stringify(pp));
+	}
+	function reloadtable(){
+		var data=[
+			{"ID": "4508759765206653","Content": "【“您的快递正由无人车配送……”川大这辆小车车萌翻一众网友！】","Time": "2020-06-10 09:28:55","Key": "无人车送快递","URL": "https://m.weibo.cn/detail/4508759765206653"},
+			{"ID": "4513116098867020","Content": "？川大强基报了6万个人[允悲]上个大学怎么这么难[跪了]","Time": "2020-06-07 08:26:33","Key": "强基计划","URL": "https://m.weibo.cn/detail/4513116098867029"},
+			{"ID": "4509597564834971","Content": "【两会中的川大好声音】","Time": "2020-05-28 14:56:02","Key": "两会川大好声音","URL": "https://m.weibo.cn/detail/4509597564834971"},
+			{"ID": "4509994756918177","Content": "【我校先进材料科研大楼正式开工】","Time": "2020-05-28 09:28:12","Key": "先进材料科研大楼","URL": "https://m.weibo.cn/detail/4509994756918177"},
+			{"ID": "4504196550443950","Content": "【 “强基计划”来川大，助你成就梦想！】报名截止时间：5月31日00:00","Time": "2020-05-13 15:48:36","Key": "强基计划","URL": "https://m.weibo.cn/detail/4504196550443952"},
+			{"ID": "4501000738201254","Content": "新传考研 四川大学考研 告终于发布啦！","Time": "2020-05-04 10:48:22","Key": "网络远程复试","URL": "https://m.weibo.cn/detail/4501000738201254"},
+			{"ID": "4460985023178985","Content": "36所高校入选强基计划试点高校名单#川大不仅是双一流大学，还是双流一大学","Time": "2020-01-15 20:45:12","Key": "强基计划","URL": "https://m.weibo.cn/detail/4460985023178985"},
+		]
+		reponse.reloadtable(data,"table");
+	}
+	function edittr(a, e) {
+		var tr = $(a).parent().parent();
+		reponse.resiverowdata(tr, "table");
+		var rowdata=$("#table").data("rowdata");
+		//alert(JSON.stringify(rowdata));
+		
+		layer.open({
+		  type: 1,
+		  title: '编辑“URL溯源求是”表格信息',
+		  closeBtn: 1,
+		  area: '516px',
+		  skin: '#fff', //没有背景色
+		  shadeClose: true,
+		  content: $('#editcontent'),
+		  btn:["保存","关闭"],
+		  btn1:function(index,layero){
+			  var ID=$("#ID").val();
+			  var Content=$("#Content").val();
+			  var Time=$("#Time").val();
+			  var Key=$("#Key").val();
+			  var URL=$("#URL").val();
+			  var obj = {
+				"ID":ID,
+			  	"Content": Content,
+			  	"Time": Time,
+			  	"Key": Key,
+			  	"URL": URL,
+			  };
+			  reponse.editsavetr(obj, "table");
+			  layer.close(index);
+		  },btn2:function(index,layero){
+			  layer.close(index);
+		  }
+		});
+	}
+	function deletetr(a, e) {
+		var tr = $(a).parent().parent();
+		reponse.deletetr(tr, e);
+	}
+	function coldata(){
+		var pp=reponse.Columndata("ID","table");
+		alert(pp);
+	}
+</script>
+
+</html>
+
+
+
+
+
+
+
