@@ -35,6 +35,7 @@
 
 05 数据库设计
 --------------
+数据库模型图的设计使用的软件为[powerDesigner](https://baike.baidu.com/item/power%20designer/2482290?fromtitle=PowerDesigner&fromid=5408320&fr=aladdin)。（这个软件很古早但是目前用起来还行。主要是如果把物理模型都改进得很好后，powerDesigner支持直接导入SQL Server中生成数据库。）</br>
 首先介绍一下EER图：</br>
 ![](https://github.com/m1-llie/SCU_hotFollowing/blob/master/readmeIMG/2.png)</br>
 在上面的ERR概念模型到逻辑模型最后到物理模型，如下所示：</br>
